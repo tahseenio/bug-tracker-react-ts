@@ -7,7 +7,7 @@ export const BugTracker = () => {
   return (
     <>
       <div>
-        <h1>{details.name}</h1>
+        <h1>{details?.name}</h1>
         <p>Software project</p>
         <button>Back to project</button>
         <h2>Filters</h2>
@@ -25,7 +25,7 @@ export const BugTracker = () => {
         <p>You're in a company-managed project</p>
         <a href='#'>Learn more</a>
       </div>
-      <h3>Projects / {details.name}</h3>
+      <h3>Projects / {details?.name}</h3>
       <div>
         <h2>Issues</h2>
         <button>Share</button>
@@ -39,7 +39,7 @@ export const BugTracker = () => {
       </div>
       <div>
         <input type='text' placeholder='Search issues' />
-        <button>Project : {details.name}</button>
+        <button>Project : {details?.name}</button>
         <button>Type</button>
         <button>Status</button>
         <button>Assignee</button>

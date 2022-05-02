@@ -8,7 +8,7 @@ import { DetailProps } from './contexts/UserContext';
 
 function App() {
   const [infoAlert, setInfoAlert] = useState<boolean>(false);
-  const [details, setDetails] = useState<{} | DetailProps>({});
+  const [details, setDetails] = useState<DetailProps | null>(null);
 
   return (
     <UserContext.Provider
