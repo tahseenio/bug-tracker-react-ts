@@ -1,25 +1,29 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import { CreateTemplate } from './components/CreateTemplate';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { Home } from './components/Home';
+import { UserContext } from './contexts/UserContext';
+import { BugTracker } from './components/BugTracker';
+import { DetailProps } from './contexts/UserContext';
 
 function App() {
+  const [infoAlert, setInfoAlert] = useState<boolean>(false);
+  const [details, setDetails] = useState<{} | DetailProps>({});
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <UserContext.Provider
+      value={{ infoAlert, setInfoAlert, details, setDetails }}
+    >
+      <div className='App'>
+        <Router>
+          <Routes>
+            <Route path={'/'} element={<Home />} />
+            <Route path={'/create'} element={<CreateTemplate />} />
+            <Route path={'/menu'} element={<BugTracker />} />
+          </Routes>
+        </Router>
+      </div>
+    </UserContext.Provider>
   );
 }
 
